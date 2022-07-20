@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>Calculator</title>
+    <script type="text/javascript">
+		var mon = []
+		function clickButtons(val) {
+			var monitor = document.getElementById("monitor");
+			if(val == "*" || val == "+" || val == "-" || val == "/") {
+				switch(val) {
+					case "*" :
+							mon.push(monitor.value);
+							mon.push("*");
+							monitor.value = "";
+							break;
+					case "+" :
+							mon.push(monitor.value);
+							mon.push("+");
+							monitor.value = "";
+							break;
+					case "-" :
+							mon.push(monitor.value);
+							mon.push("-");
+							monitor.value = "";
+							break;
+					case "/" :
+							mon.push(monitor.value);
+							mon.push("/");
+							monitor.value = "";
+							break;
+				}
+			} else if(val == "C") {
+				mon = [];
+				monitor.value = "";
+			} else if(val == "=") {
+				if(mon[1] == "+") {
+					mon.push(monitor.value);
+					monitor.value = parseInt(mon[0]) + parseInt(mon[2]);
+				} else if(mon[1] == "*") {
+					mon.push(monitor.value);
+					monitor.value = mon[0] * mon[2];
+				} else if(mon[1] == "-") {
+					mon.push(monitor.value);
+					monitor.value = mon[0] - mon[2];
+				} else if(mon[1] == "/") {
+					mon.push(monitor.value);
+					monitor.value = mon[0] / mon[2];
+				}
+			} else {
+				monitor.value += val;
+			}
+		}
+	</script>
+	<style>
+		.buttons {
+			width: 40px;
+			height: 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 align="center"> KALKULATOR </h1>
+	<table border="1" cellspacing="0" align="center">
+		<tr>
+			<td colspan="5"><input type="text" id="monitor" value="" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" class="buttons" value="*" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="+" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="-" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="C" onclick="clickButtons(value)" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" class="buttons" value="7" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="8" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="9" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="/" onclick="clickButtons(value)" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" class="buttons" value="4" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="5" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="6" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="=" onclick="clickButtons(value)" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" class="buttons" value="1" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="2" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="3" onclick="clickButtons(value)" /></td>
+			<td><input type="button" class="buttons" value="0" onclick="clickButtons(value)" /></td>
+		</tr>
+	</table>
+</body>
+
+</html>
